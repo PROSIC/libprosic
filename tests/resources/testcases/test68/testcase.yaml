@@ -1,0 +1,35 @@
+# real data with known somatic SNV.
+
+expected:
+  allelefreqs:
+    - tumor >= 0.5 && normal == 0.0
+  posteriors:
+    - PROB_SOMATIC_TUMOR_HIGH <= 0.05
+
+# necessary bam files
+samples:
+  tumor:
+    path: 'tumor.bam'
+    properties: '{"insert_size":{"mean":182.29711062507195,"sd":46.906288277549656},"max_del_cigar_len":36,"max_ins_cigar_len":16,"frac_max_softclip":0.801980198019802,"max_read_len":101,"initial":false}'
+    options: '{"Preprocess":{"kind":{"Variants":{"reference":"resources/genome.fasta","candidates":"results/candidate-calls/foo.freebayes.11-of-15.bcf","bam":"results/recal/foo.sorted.bam","reference_buffer_size":10,"min_bam_refetch_distance":1,"alignment_properties":null,"output":"results/observations/foo/foo.freebayes.11-of-15.bcf","spurious_ins_rate":2.8e-6,"spurious_del_rate":5.1e-6,"spurious_insext_rate":0.0,"spurious_delext_rate":0.0,"protocol_strandedness":"Opposite","realignment_window":64,"max_depth":200,"omit_insert_size":false,"pairhmm_mode":"exact"}}}}'
+  normal:
+    path: 'normal.bam'
+    properties: '{"insert_size":{"mean":185.5533279871692,"sd":47.45100882512638},"max_del_cigar_len":18,"max_ins_cigar_len":12,"frac_max_softclip":0.801980198019802,"max_read_len":101,"initial":false}'
+    options: '{"Preprocess":{"kind":{"Variants":{"reference":"resources/genome.fasta","candidates":"results/candidate-calls/foo.11-of-15.bcf","bam":"results/recal/foo.sorted.bam","reference_buffer_size":10,"min_bam_refetch_distance":1,"alignment_properties":null,"output":"results/observations/foo/foo.freebayes.11-of-15.bcf","spurious_ins_rate":2.8e-6,"spurious_del_rate":5.1e-6,"spurious_insext_rate":0.0,"spurious_delext_rate":0.0,"protocol_strandedness":"Opposite","realignment_window":64,"max_depth":200,"omit_insert_size":false,"pairhmm_mode":"exact"}}}}'
+  
+
+# candidate variant
+candidate: 'candidates.vcf'
+
+scenario: 'scenario.yaml'
+
+
+
+
+# reference sequence
+reference:
+  path: 'ref.fa'
+
+mode: Generic
+
+version: '4'
