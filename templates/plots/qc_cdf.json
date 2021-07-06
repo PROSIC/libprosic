@@ -1,0 +1,18 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"values": []},
+  "layer": [
+    {
+      "mark": "tick",
+      "encoding": {"x": {"field": "bootstraps", "type": "quantitative"}}
+    },
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "bootstraps", "type": "quantitative"},
+        "y": {"field": "ecdf", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {}
+}
